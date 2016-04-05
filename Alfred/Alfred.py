@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from commandlist import commandlist
+from commandlist import CommandList
 import time
 import channels as ch
 
@@ -39,5 +39,7 @@ class Alfred(object):
             time.sleep(1)
             self.update_channels()
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print "Here be dragons!"
+    alf = Alfred()
+    alf.mainloop()
