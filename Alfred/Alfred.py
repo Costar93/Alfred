@@ -4,6 +4,7 @@
 from commandlist import CommandList
 import time
 import channels as ch
+import actions as ac
 
 class Alfred(object):
     """Class for Alfred Personal Digital Butler
@@ -15,6 +16,8 @@ class Alfred(object):
         self.cl = CommandList()
         self.channels = []
         self.channels.append(ch.TextChannel())
+        self.actions = []
+        self.actions.append(ac.MusicPlayer())
 
     def next_command(self):
         try:
@@ -27,6 +30,9 @@ class Alfred(object):
             while chan.msg_avail():
                 self.cl.append(chan.get_msg())
 
+    def execute_command(self, command):
+        print "Will execute", command
+
     def mainloop(self):
         #while True:
         #   command = get_command
@@ -35,7 +41,8 @@ class Alfred(object):
         while True:
             command = self.next_command()
             if command:
-                print command
+                self.execute_command(command)
+                #print command
             time.sleep(1)
             self.update_channels()
 
