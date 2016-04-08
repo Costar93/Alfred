@@ -5,7 +5,7 @@ class Action(object):
     def __init__(self):
         super(Action, self).__init__()
 
-    def do(self):
+    def do(self, command):
         pass
 
     def is_for_you(self, word):
@@ -17,8 +17,22 @@ class MusicPlayer(Action):
         super(MusicPlayer, self).__init__()
         self.triggers = ["music","audio"]
 
-    def do(self):
-        pass
+    def do(self, command):
+        print "Will", " ".join(command), "music"
+
+    def is_for_you(self, word):
+        if word in self.triggers:
+            return True
+        return False
+
+class Lights(Action):
+    """Lights for Alfred"""
+    def __init__(self):
+        super(Lights, self).__init__()
+        self.triggers = ["lights"]
+
+    def do(self, command):
+        print "Will set light in", " ".join(command)
 
     def is_for_you(self, word):
         if word in self.triggers:
