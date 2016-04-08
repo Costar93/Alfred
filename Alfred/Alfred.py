@@ -17,10 +17,12 @@ class Alfred(object):
 
         self.channels = []
         self.channels.append(ch.TextChannel())
+        self.channels.append(ch.TelegramChannel())
 
         self.actions = []
         self.actions.append(ac.MusicPlayer())
         self.actions.append(ac.Lights())
+
 
     def next_command(self):
         try:
@@ -38,9 +40,9 @@ class Alfred(object):
         words = command.split()
         first_words = words[0]
         rest_words = words[1:]
-        for a in self.actions:
-            if a.is_for_you(first_words):
-                a.do(rest_words)
+        for act in self.actions:
+            if act.is_for_you(first_words):
+                act.do(rest_words)
                 break
 
         else:

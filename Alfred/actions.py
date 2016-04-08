@@ -18,7 +18,7 @@ class MusicPlayer(Action):
         self.triggers = ["music","audio"]
 
     def do(self, command):
-        print "Will", " ".join(command), "music"
+        print "*Will", " ".join(command), "music*"
 
     def is_for_you(self, word):
         if word in self.triggers:
@@ -32,7 +32,7 @@ class Lights(Action):
         self.triggers = ["lights"]
 
     def do(self, command):
-        print "Will set light in", " ".join(command)
+        print "*Will set lights in", " ".join(command), "*"
 
     def is_for_you(self, word):
         if word in self.triggers:
