@@ -19,6 +19,7 @@ class MusicPlayer(Action):
 
     def do(self, command):
         print "*Will", " ".join(command), "music*"
+        return "DONE"
 
     def is_for_you(self, word):
         if word in self.triggers:
@@ -33,6 +34,7 @@ class Lights(Action):
 
     def do(self, command):
         print "*Will set lights in", " ".join(command), "*"
+        return "OK"
 
     def is_for_you(self, word):
         if word in self.triggers:
