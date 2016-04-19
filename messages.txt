@@ -2,3 +2,4 @@ music play
 music stop
 lights livingroom off
 lights ambilight on
+huidfshgui

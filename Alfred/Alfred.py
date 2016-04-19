@@ -4,7 +4,8 @@
 from commandlist import CommandList
 import time
 import channels as ch
-import actions as ac
+import actions_fitxer as ac.
+
 
 class Alfred(object):
     """Class for Alfred Personal Digital Butler
