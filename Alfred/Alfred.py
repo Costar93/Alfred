@@ -4,7 +4,7 @@
 from commandlist import CommandList
 import time
 import channels as ch
-import actions_fitxer as ac.
+import actions as ac
 
 
 class Alfred(object):
