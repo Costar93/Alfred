@@ -5,7 +5,8 @@ from commandlist import CommandList
 import time
 import channels as ch
 import actions as ac
-
+import yaml
+import pprint
 
 class Alfred(object):
     """Class for Alfred Personal Digital Butler
@@ -14,12 +15,20 @@ class Alfred(object):
     def __init__(self):
         super(Alfred, self).__init__()
         self.cl = CommandList()
+        self._get_config()
         self.channels = []
         self.channels.append(ch.TextChannel())
         self.channels.append(ch.TelegramChannel())
         self.actions = []
         self.actions.append(ac.MusicPlayer())
         self.actions.append(ac.Lights())
+
+    def _get_config(self):
+        with open("Alfred.yaml") as f:
+            self.cfg = yaml.load(f)
+
+        print "Configuration:"
+        print json.dumps(self.cfg, indent=4)
 
     def next_command(self):
         try:

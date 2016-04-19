@@ -1,0 +1,8 @@
+telegram:
+  token: TOKEEEN
+  usuaris:
+    - Costar93
+    musicplayer:
+      directories:
+        - /home/pi/musicplayer
+        - /home/pi/Musics
