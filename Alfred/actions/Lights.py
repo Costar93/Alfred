@@ -7,8 +7,8 @@ class Lights(Action):
         self.triggers = ["lights"]
 
     def do(self, command):
-        print "*Will set lights in", " ".join(command), "*"
-        return "OK"
+        print "Will set lights in", " ".join(command)
+        return "DONE SIR"
 
     def is_for_you(self, word):
         if word in self.triggers:

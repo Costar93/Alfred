@@ -7,8 +7,8 @@ class MusicPlayer(Action):
         self.triggers = ["music","audio"]
 
     def do(self, command):
-        print "*Will", " ".join(command), "music*"
-        return "DONE"
+        print "Will", " ".join(command), "music"
+        return "DONE SIR"
 
     def is_for_you(self, word):
         if word in self.triggers:

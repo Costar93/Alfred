@@ -7,6 +7,7 @@ import channels as ch
 import actions as ac
 import yaml
 import pprint
+import json
 
 class Alfred(object):
     """Class for Alfred Personal Digital Butler
@@ -15,20 +16,24 @@ class Alfred(object):
     def __init__(self):
         super(Alfred, self).__init__()
         self.cl = CommandList()
+
         self._get_config()
+
         self.channels = []
         self.channels.append(ch.TextChannel())
-        self.channels.append(ch.TelegramChannel())
+        self.channels.append(ch.TelegramChannel(self.cfg))
+
         self.actions = []
         self.actions.append(ac.MusicPlayer())
         self.actions.append(ac.Lights())
+        self.actions.append(ac.SensorAction())
 
     def _get_config(self):
         with open("Alfred.yaml") as f:
             self.cfg = yaml.load(f)
 
-        print "Configuration:"
-        print json.dumps(self.cfg, indent=4)
+        #print "Configuration:"
+        #print json.dumps(self.cfg, indent=4)
 
     def next_command(self):
         try:
@@ -42,13 +47,13 @@ class Alfred(object):
                 self.cl.append((chan, chan.get_msg()))
 
     def execute_command(self, command):
-        print "\nWill execute", command
+        print "\n*Will execute", command
         words = command.split()
         first_words = words[0]
         rest_words = words[1:]
         response = None
         for act in self.actions:
-            if act.is_for_you(first_words):
+            if act.is_for_you(first_words.lower()):
                 response = act.do(rest_words)
                 break
         else:

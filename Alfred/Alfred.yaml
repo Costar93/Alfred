@@ -1,8 +1,4 @@
 telegram:
-  token: TOKEEEN
+  token: 209697750:AAHKO6YVX6SUvYKy96hc3NwhfNlDL34kxeg
   usuaris:
-    - Costar93
-    musicplayer:
-      directories:
-        - /home/pi/musicplayer
-        - /home/pi/Musics
+    - 193312630
