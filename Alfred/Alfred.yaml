@@ -2,3 +2,10 @@ telegram:
   token: 209697750:AAHKO6YVX6SUvYKy96hc3NwhfNlDL34kxeg
   usuaris:
     - 193312630
+
+wol:
+  pcs:
+    - nom: "pc2"
+      mac: "11:22:33:44:55:66"
+    - nom: "homepc"
+      mac: "12:13:14:15:16:17"

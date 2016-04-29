@@ -24,7 +24,7 @@ class AlfredBot(telepot.Bot):
                     self.clist.append(command)
                     self.chat_id = chat_id
             else:
-                self.sendMessage(chat_id, "Tou do not have authoritzation")
+                self.sendMessage(chat_id, "You are not Batman, you are not allowed")
                 print "Finished"
 
     def respond(self, response):

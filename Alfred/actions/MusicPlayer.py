@@ -2,8 +2,8 @@ from Action import Action
 
 class MusicPlayer(Action):
     """MusicPlayer for Alfred"""
-    def __init__(self):
-        super(MusicPlayer, self).__init__()
+    def __init__(self, cfg):
+        super(MusicPlayer, self).__init__(cfg)
         self.triggers = ["music","audio"]
 
     def do(self, command):

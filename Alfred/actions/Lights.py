@@ -2,8 +2,8 @@ from Action import Action
 
 class Lights(Action):
     """Lights for Alfred"""
-    def __init__(self):
-        super(Lights, self).__init__()
+    def __init__(self, cfg):
+        super(Lights, self).__init__(cfg)
         self.triggers = ["lights"]
 
     def do(self, command):

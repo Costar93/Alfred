@@ -24,9 +24,10 @@ class Alfred(object):
         self.channels.append(ch.TelegramChannel(self.cfg))
 
         self.actions = []
-        self.actions.append(ac.MusicPlayer())
-        self.actions.append(ac.Lights())
-        self.actions.append(ac.SensorAction())
+        self.actions.append(ac.MusicPlayer(self.cfg))
+        self.actions.append(ac.Lights(self.cfg))
+        self.actions.append(ac.SensorAction(self.cfg))
+        self.actions.append(ac.WakeAction(self.cfg))
 
     def _get_config(self):
         with open("Alfred.yaml") as f:
