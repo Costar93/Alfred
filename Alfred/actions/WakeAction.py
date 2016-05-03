@@ -1,12 +1,15 @@
 from Action import Action
 import subprocess
 from wakeonlan import wol
+from mpd import (MPDClient, CommandError)
 
 class WakeAction(Action):
     """MusicPlayer for Alfred"""
     def __init__(self, cfg):
         super(WakeAction, self).__init__(cfg)
         self.triggers = ["wake"]
+        self.mpd = MPDClient()
+        self.mpd.connect("localhost", "6600")
 
     def do(self, command):
         print "Will wake the computer", " ".join(command)
