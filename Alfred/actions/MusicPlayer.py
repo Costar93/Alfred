@@ -30,11 +30,22 @@ class MusicPlayer(Action):
     def _do_clear(self, command):
         return self.mpd.clear()
 
+    def _do_next(self, command):
+        return self.mpd.next()
+
+    def _do_pause(self, command):
+        return self.mpd.pause()
+
+    def _do_repeat(self, command):
+        return self.mpd.repeat()
+
     def _do_play(self, command):
         try:
             id = command[1]
+            print id
             return self.mpd.playid()
         except:
+            print "no id"
             return self.mpd.play()
 
     def _do_stop(self, command):
@@ -57,6 +68,12 @@ class MusicPlayer(Action):
             return self._do_stop(command)
         elif command[0] == "clear":
             return self._do_clear(command)
+        elif command[0] == "next":
+            return self._do_next(command)
+        elif command[0] == "pause":
+            return self._do_pause(command)
+        elif command[0] == "repeat":
+            return self._do_repeat(command)
         return "Done SIR"
 
     def is_for_you(self, word):
