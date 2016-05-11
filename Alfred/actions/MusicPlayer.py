@@ -33,17 +33,31 @@ class MusicPlayer(Action):
     def _do_next(self, command):
         return self.mpd.next()
 
+    def _do_previous(self, command):
+        return self.mpd.previous()
+
     def _do_pause(self, command):
         return self.mpd.pause()
 
+    def _do_shuffle(self, command):
+        return self.mpd.shuffle()
+
     def _do_repeat(self, command):
-        return self.mpd.repeat()
+        try:
+            if command[1] == "on":
+                return self.mpd.repeat(1)
+            elif command[1] == "off":
+                return self.mpd.repeat(0)
+            else:
+                return "Error"
+        except:
+            return "Error"
 
     def _do_play(self, command):
         try:
-            id = command[1]
-            print id
-            return self.mpd.playid()
+            id1 = command[1]
+            print id1
+            return self.mpd.play(id1)
         except:
             print "no id"
             return self.mpd.play()
@@ -70,10 +84,14 @@ class MusicPlayer(Action):
             return self._do_clear(command)
         elif command[0] == "next":
             return self._do_next(command)
+        elif command[0] == "previous":
+            return self._do_previous(command)
         elif command[0] == "pause":
             return self._do_pause(command)
         elif command[0] == "repeat":
             return self._do_repeat(command)
+        elif command[0] == "shuffle":
+            return self._do_shuffle(command)
         return "Done SIR"
 
     def is_for_you(self, word):

@@ -1,5 +1,2 @@
 lights livingroom off
-lights ambilight on
-fail
-temperature mesure
 wake pc2
