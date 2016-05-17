@@ -8,6 +8,7 @@ class MusicPlayer(Action):
         self.triggers = ["music","audio"]
         self.mpd = MPDClient()
         self.mpd.connect("localhost", "6600")
+        self.mpd.consume(0)
 
     def _do_update(self, command):
         self.mpd.update()
@@ -22,7 +23,7 @@ class MusicPlayer(Action):
 
     def _do_add(self, command):
         song = " ".join(command[1:])
-        return self.mpd.addid(song)
+        return self.mpd.add(song)
 
     def _do_queue(self,command):
         return "list: %s" % (self.mpd.playlist())
@@ -55,9 +56,9 @@ class MusicPlayer(Action):
 
     def _do_play(self, command):
         try:
-            id1 = command[1]
-            print id1
-            return self.mpd.play(id1)
+            songpos = command[1]
+            print songpos
+            return self.mpd.play(int(songpos))
         except:
             print "no id"
             return self.mpd.play()
