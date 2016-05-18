@@ -23,48 +23,57 @@ class MusicPlayer(Action):
 
     def _do_add(self, command):
         song = " ".join(command[1:])
-        return self.mpd.add(song)
+        self.mpd.add(song)
+        return "Song %s Added SIR" % (song)
 
     def _do_queue(self,command):
         return "list: %s" % (self.mpd.playlist())
 
     def _do_clear(self, command):
-        return self.mpd.clear()
+        self.mpd.clear()
+        return "Clear Done SIR"
 
     def _do_next(self, command):
-        return self.mpd.next()
+        self.mpd.next()
+        return "Next Song Done SIR"
 
     def _do_previous(self, command):
-        return self.mpd.previous()
+        self.mpd.previous()
+        return "Previous Song Done SIR"
 
     def _do_pause(self, command):
-        return self.mpd.pause()
+        self.mpd.pause()
+        return "Music Paused SIR"
 
     def _do_shuffle(self, command):
-        return self.mpd.shuffle()
+        self.mpd.shuffle()
+        return "Music shuffled SIR"
 
     def _do_repeat(self, command):
         try:
             if command[1] == "on":
-                return self.mpd.repeat(1)
+                self.mpd.repeat(1)
+                return "Repeat Set On SIR"
             elif command[1] == "off":
-                return self.mpd.repeat(0)
+                self.mpd.repeat(0)
+                return "Repeat Set Off SIR"
             else:
-                return "Error"
+                return "Error SIR"
         except:
-            return "Error"
+            return "Error SIR"
 
     def _do_play(self, command):
         try:
             songpos = command[1]
-            print songpos
-            return self.mpd.play(int(songpos))
+            self.mpd.play(int(songpos))
+            return "Playing %s Song Done SIR" % (songpos)
         except:
-            print "no id"
-            return self.mpd.play()
+            self.mpd.play()
+            return "Music Playing SIR"
 
     def _do_stop(self, command):
         return self.mpd.stop()
+        return "Music Stoped SIR"
 
     def do(self, command):
         print "Will", " ".join(command), "music"
