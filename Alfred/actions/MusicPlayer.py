@@ -72,7 +72,7 @@ class MusicPlayer(Action):
             return "Music Playing SIR"
 
     def _do_stop(self, command):
-        return self.mpd.stop()
+        self.mpd.stop()
         return "Music Stoped SIR"
 
     def do(self, command):
